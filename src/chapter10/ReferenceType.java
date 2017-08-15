@@ -14,6 +14,7 @@ public class ReferenceType {
         person.setName("知名图书管理员");
         proceessPerson(person);
         System.out.println(person.getName());
+        System.out.println("2017年07月13日".substring(0,8));
     }
 
     static void proceessPerson(Person person){
