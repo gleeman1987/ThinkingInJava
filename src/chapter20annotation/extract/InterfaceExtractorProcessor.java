@@ -1,6 +1,5 @@
 package chapter20annotation.extract;
 
-import com.sun.tools.internal.ws.processor.modeler.annotation.AnnotationProcessorContext;
 
 import javax.annotation.processing.Completion;
 import javax.annotation.processing.ProcessingEnvironment;
@@ -20,12 +19,12 @@ import java.util.Set;
  */
 public class InterfaceExtractorProcessor implements Processor {
 
-    private final AnnotationProcessorContext context;
+//    private final AnnotationProcessorContext context;
     private RoundEnvironment roundEnv;
 
-    public InterfaceExtractorProcessor(AnnotationProcessorContext context) {
-        this.context = context;
-    }
+//    public InterfaceExtractorProcessor(AnnotationProcessorContext context) {
+//        this.context = context;
+//    }
 
     @Override
     public Set<String> getSupportedOptions() {
