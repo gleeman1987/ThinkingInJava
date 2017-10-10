@@ -31,8 +31,10 @@ public class Holder3<T> {
 class Holder<E>{
     private E t;
 
+    public Holder() {
+    }
+
     public Holder(E t) {
-        System.out.println("t.getClass().getCanonicalName() = " + t.getClass().getCanonicalName());
         this.t = t;
     }
 
