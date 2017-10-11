@@ -1,5 +1,7 @@
 package chapter15generics;
 
+import java.util.Random;
+
 /**
  * OkLine(Hangzhou) Co,ltd
  * Created by zhengjun
@@ -18,10 +20,21 @@ class FArray {
 public class PrimitiveGenericTest {
     public static void main(String[] args) {
         String[] strings = FArray.fill(new String[7], new Generator<String>() {
+            Random random = new Random(47);
+            String[] store = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm".split("");
             @Override
             public String next() {
-                return null;
+                StringBuilder result = new StringBuilder();
+                for (int i = 0; i < 7; i++) {
+                    result.append(store[random.nextInt(store.length)]);
+                }
+
+                return result.toString();
             }
         });
+
+        for (String string : strings) {
+            System.out.println(string);
+        }
     }
 }
