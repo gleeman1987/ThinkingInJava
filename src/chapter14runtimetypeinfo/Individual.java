@@ -34,15 +34,6 @@ class Person extends Individual {
     }
 }
 
-class Dog extends Pet {
-    public Dog() {
-    }
-
-    public Dog(String name) {
-        super(name);
-    }
-}
-
 class Mut extends Dog {
     public Mut() {
     }
@@ -57,15 +48,6 @@ class Pug extends Dog {
     }
 
     public Pug(String name) {
-        super(name);
-    }
-}
-
-class Cat extends Pet {
-    public Cat() {
-    }
-
-    public Cat(String name) {
         super(name);
     }
 }
