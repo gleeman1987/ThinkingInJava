@@ -54,13 +54,25 @@ class TimeStampeda extends Decorator {
 class SerialNumbereda extends Decorator{
     private static long counter = 1;
     private final long serialNumber = counter++;
+
+    public long getSerialNumber() {
+        return serialNumber;
+    }
+
     public SerialNumbereda(Basica basica) {
         super(basica);
     }
 }
 
-
-
 public class Decoration {
-
+    public static void main(String[] args) {
+        TimeStampeda timeStampeda = new TimeStampeda(new Basica());
+        TimeStampeda timeStampeda1 = new TimeStampeda(new SerialNumbereda(new Basica()));
+        long timeStamp = timeStampeda1.getTimeStamp();
+        System.out.println("timeStamp = " + timeStamp);
+        if (timeStampeda1.basica instanceof SerialNumbereda) {
+            SerialNumbereda stampeda1 = (SerialNumbereda) timeStampeda1.basica;
+            System.out.println("stampeda1 = " + stampeda1.getSerialNumber());
+        }
+    }
 }
