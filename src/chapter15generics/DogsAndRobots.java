@@ -36,6 +36,8 @@ class Robot implements Performs {
     }
 }
 
+class Communicate {}
+
 public class DogsAndRobots {
 
 }
