@@ -43,23 +43,23 @@ class SmartDog{
 }
 
 class CommunicateReflectively {
-    public static void perform(Object args) {
-        Class<?> argsClass = args.getClass();
+    public static void perform(Object performer) {
+        Class<?> performerClass = performer.getClass();
         try {
-            Method speak = argsClass.getMethod("speak");
-            speak.invoke(args);
+            Method speak = performerClass.getMethod("speak");
+            speak.invoke(performer);
         } catch (NoSuchMethodException e) {
-            System.out.println(args + " cannot speak!");
+            System.out.println(performer + " cannot speak!");
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
         try {
-            Method sit = argsClass.getMethod("sit");
-            sit.invoke(args);
+            Method sit = performerClass.getMethod("sit");
+            sit.invoke(performer);
         } catch (NoSuchMethodException e) {
-            System.out.println(args +" cannot sit!");
+            System.out.println(performer +" cannot sit!");
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
@@ -68,5 +68,15 @@ class CommunicateReflectively {
     }
 }
 public class LatentReflection {
-
+    public static void main(String[] args) {
+        CommunicateReflectively.perform(new SmartDog());
+        CommunicateReflectively.perform(new Robot());
+        CommunicateReflectively.perform(new Mime());
+//        SmartDog.speak Woof!
+//        SmartDog.sit
+//        Robot.speak 'Click!'
+//        Robot.sit
+//        Mime cannot speak!
+//        Mime.sit
+    }
 }
