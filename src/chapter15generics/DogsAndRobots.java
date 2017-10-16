@@ -36,8 +36,26 @@ class Robot implements Performs {
     }
 }
 
-class Communicate {}
+class Communicate {
+    public static <T extends Performs> void perform(T performer){
+        performer.sit();
+        performer.speak();
+    }
+
+    public static void perform2(Performs performs){
+        performs.sit();
+        performs.speak();
+    }
+}
 
 public class DogsAndRobots {
-
+    public static void main(String[] args) {
+        PerformingDog performingDog = new PerformingDog();
+        Robot robot = new Robot();
+        Communicate.perform(performingDog);
+        Communicate.perform(robot);
+        System.out.println("---------------------------------");
+        Communicate.perform2(performingDog);
+        Communicate.perform2(robot);
+    }
 }
