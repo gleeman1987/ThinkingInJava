@@ -181,5 +181,16 @@ public class Functional {
         }
         System.out.println("bigIntegers = " + bigIntegers);
 //        bigIntegers = [11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
+        BigInteger sum = reduce(bigIntegers, new BigIntegerAdder());
+        System.out.println("reduce(bigIntegers,new BigIntegerAdder()) = " + sum);
+//        reduce(bigIntegers,new BigIntegerAdder()) = 311
+        System.out.println("sum.isProbablePrime(5) = " + sum.isProbablePrime(5));
+//        reduce(bigIntegers,new BigIntegerAdder()).isProbablePrime(5) = true
+
+        List<AtomicLong> atomicLongs = Arrays.asList(new AtomicLong(11), new AtomicLong(47), new AtomicLong(74), new AtomicLong(133));
+        System.out.println("reduce(atomicLongs,new AtomicLongAdder()) = " + reduce(atomicLongs, new AtomicLongAdder()));
+//        reduce(atomicLongs,new AtomicLongAdder()) = 265
+        System.out.println("transform(bigDecimals,new BigDecimalUlp()) = " + transform(bigDecimals, new BigDecimalUlp()));
+//        transform(bigDecimals,new BigDecimalUlp()) = [0.000001, 0.000001, 0.000001, 0.000001]
     }
 }
