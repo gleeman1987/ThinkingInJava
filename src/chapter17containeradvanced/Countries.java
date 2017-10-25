@@ -221,5 +221,37 @@ public class Countries {
         };
     }
 
+    static Map<String,String> map = new FlyWeightMap();
+
+    public static Map<String, String> capitals() {
+        return map;
+    }
+
+    public static Map<String, String> capitals(int size) {
+        return select(size);
+    }
+
+    static List<String> names = new ArrayList<>(map.keySet());
+
+    public static List<String> names() {
+        return names;
+    }
+
+    public static List<String> names(int size) {
+        return new ArrayList<>(select(size).keySet());
+    }
+
+    public static void main(String[] args) {
+        System.out.println("capitals(10) = " + capitals(10));
+//        capitals(10) = {ALGERIA=Algiers, ANGOLA=Luanda, BENIN=Porto-Novo, BOTSWANA=Gaberone, BURKINA FASO=Ouagadougou, BURUNDI=Bujumbura, CAMEROON=Yaounde, CAPE VERDE=Praia, CENTRAL AFRICAN REPUBLIC=Bangui, CHAD=N'djamena}
+        System.out.println("names(10) = " + names(10));
+//        names(10) = [ALGERIA, ANGOLA, BENIN, BOTSWANA, BURKINA FASO, BURUNDI, CAMEROON, CAPE VERDE, CENTRAL AFRICAN REPUBLIC, CHAD]
+
+        System.out.println("new HashMap<String,String>(capitals(3)) = " + new HashMap<String, String>(capitals(3)));
+//        new HashMap<String,String>(capitals(3)) = {BENIN=Porto-Novo, ANGOLA=Luanda, ALGERIA=Algiers}
+
+        System.out.println(names());
+    }
+
 
 }
