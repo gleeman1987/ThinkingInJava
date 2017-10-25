@@ -30,9 +30,10 @@ public class CountingGenerator {
 
     static char[] chars = "abcdefghijklmnopqrrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWZYX".toCharArray();
     public static class Character implements Generator<java.lang.Character>{
+        private int index;
         @Override
         public java.lang.Character next() {
-            return chars[new Random().nextInt(chars.length)];
+            return chars[index++];
         }
     }
 
