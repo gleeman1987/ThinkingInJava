@@ -58,7 +58,14 @@ public class RandomGenerator {
     public static class Short implements Generator<java.lang.Short> {
         @Override
         public java.lang.Short next() {
-            return (short)random.nextInt();
+            return (short) random.nextInt();
+        }
+    }
+
+    public static class Long implements Generator<java.lang.Long> {
+        @Override
+        public java.lang.Long next() {
+            return (long)random.nextInt();
         }
     }
 
