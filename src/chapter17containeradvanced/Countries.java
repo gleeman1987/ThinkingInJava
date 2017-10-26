@@ -252,6 +252,4 @@ public class Countries {
 
         System.out.println(names());
     }
-
-
 }
