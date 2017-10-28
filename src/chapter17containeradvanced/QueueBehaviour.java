@@ -3,7 +3,12 @@ package chapter17containeradvanced;
 import chapter15generics.Generator;
 
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 import java.util.Queue;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.PriorityBlockingQueue;
 
 /**
  * OkLine(Hangzhou) Co,ltd
@@ -23,7 +28,7 @@ public class QueueBehaviour {
         System.out.println();
     }
     static class IGenerator implements Generator<String>{
-        public static String[] array = "1234567890".split("");
+        public static String[] array = "one two three four five six seven eight nine ten one two three four five six seven eight nine ten".split(" ");
         private int index;
         @Override
         public String next() {
@@ -33,5 +38,16 @@ public class QueueBehaviour {
 
     public static void main(String[] args) {
         test(new LinkedList<String>(),new IGenerator());
+//        one  two  three  four  five  six  seven  eight  nine  ten
+        test(new PriorityQueue<>(),new IGenerator());
+//        eight  five  four  nine  one  seven  six  ten  three  two
+        test(new ArrayBlockingQueue<String>(count),new IGenerator());
+//        one  two  three  four  five  six  seven  eight  nine  ten
+        test(new ConcurrentLinkedQueue<>(),new IGenerator());
+//        one  two  three  four  five  six  seven  eight  nine  ten
+        test(new LinkedBlockingQueue<>(count),new IGenerator());
+//        one  two  three  four  five  six  seven  eight  nine  ten
+        test(new PriorityBlockingQueue<>(),new IGenerator());
+//        eight  five  four  nine  one  seven  six  ten  three  two
     }
 }
