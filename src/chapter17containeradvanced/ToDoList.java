@@ -53,14 +53,17 @@ public class ToDoList extends PriorityQueue<ToDoList.ToDoItem>{
         ToDoList toDoItems = new ToDoList();
         toDoItems.add('C',4,"扔垃圾");
         toDoItems.add('A',2,"喂猫");
+        toDoItems.add('A',3,"东方不败");
         toDoItems.add('C',3,"喂狗");
-        toDoItems.add('C',4,"扔垃圾");
-        toDoItems.add('C',4,"扔垃圾");
-        toDoItems.add('C',4,"扔垃圾");
-        toDoItems.add('C',4,"扔垃圾");
-        for (ToDoItem toDoItem : toDoItems) {
-            System.out.println(toDoItem);
+        toDoItems.add('A',1,"令狐冲");
+        toDoItems.add('B',4,"不胜人生一场醉");
+        toDoItems.add('C',2,"断弦");
+        toDoItems.add('C',1,"飞龙在天");
+        for (int i = 0; i < toDoItems.size(); i++) {
+            System.out.println(toDoItems.peek());
         }
+        while (!toDoItems.isEmpty())
+            System.out.println(toDoItems.remove());
     }
 
 }
