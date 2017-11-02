@@ -43,7 +43,7 @@ public class SlowMap<K,V> extends AbstractMap<K,V> {
         return oldValue;
     }
 
-    private static class MapEntry<K, V> implements Entry<K, V> {
+    public static class MapEntry<K, V> implements Map.Entry<K, V> {
 
         private K k;
         private V v;
