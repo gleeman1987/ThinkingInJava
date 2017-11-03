@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Individual {
+public class Individual implements Comparable<Individual> {
     private static long count ;
     private long id = count++;
     private String name;
@@ -25,6 +25,11 @@ public class Individual {
         return this.getClass().getSimpleName()+(name==null || "".equals(name)?"":"{" +
                 "name='" + name + '\'' +
                 '}');
+    }
+
+    @Override
+    public int compareTo(Individual o) {
+        return 0;
     }
 }
 
