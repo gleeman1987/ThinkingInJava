@@ -28,8 +28,33 @@ public class Individual implements Comparable<Individual> {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        return obj instanceof Individual && ((Individual)obj).name.equals(name) && ((Individual)obj).id == id;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        if (name != null) {
+            result = result*37 + name.hashCode();
+        }
+        result = (int) (result*37 + id);
+        return result;
+    }
+
+    @Override
     public int compareTo(Individual o) {
-        return 0;
+        int firstCompare = this.getClass().getSimpleName().compareTo(o.getClass().getSimpleName());
+        if (firstCompare != 0) {
+            return firstCompare;
+        }
+        if (name != null && o.name!=null) {
+            int compare = name.compareTo(o.name);
+            if (compare != 0) {
+                return compare;
+            }
+        }
+        return Long.compare(id,o.id);
     }
 }
 
@@ -89,15 +114,6 @@ class Rodent extends Pet {
     }
 
     public Rodent(String name) {
-        super(name);
-    }
-}
-
-class Rat extends Rodent {
-    public Rat() {
-    }
-
-    public Rat(String name) {
         super(name);
     }
 }
