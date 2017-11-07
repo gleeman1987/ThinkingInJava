@@ -85,6 +85,6 @@ public class Tester<C> {
     }
 
     public static <C> void run(C cntnr,List<Test<C>> tests){
-
+        new Tester<>(cntnr,tests).timedTest();
     }
 }
