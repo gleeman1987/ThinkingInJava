@@ -32,6 +32,11 @@ public class 测试 {
         System.out.println("\"中华人民共和国\".hashCode() = " + "中华人民共和国".hashCode());
         System.out.println("\"United State of America\".hashCode() = " + "United State of America".hashCode());
         System.out.println("Long.valueOf(System.currentTimeMillis()).hashCode() = " + Long.valueOf(System.currentTimeMillis()).hashCode());
+//        "".hashCode() = 0
+//        " ".hashCode() = 32
+//        "中华人民共和国".hashCode() = 564019978
+//        "United State of America".hashCode() = -474453775
+//        Long.valueOf(System.currentTimeMillis()).hashCode() = 2104331468
         System.out.println("Integer.toHexString(256*0.9) = " + Integer.toHexString((int) (256 * 0.9)));
     }
 

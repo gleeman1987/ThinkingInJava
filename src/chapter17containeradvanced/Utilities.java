@@ -3,6 +3,7 @@ package chapter17containeradvanced;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 /**
  * OkLine(Hangzhou) Co,ltd
@@ -45,6 +46,15 @@ public class Utilities {
         Collections.copy(list,sourcr);
         System.out.println("copy = " + list);
 //        copy = [in, the, matrix, Yo, six, five, Four]
-
+        Collections.swap(list,0,list.size()-1);
+        System.out.println("swap = " + list);
+        Collections.shuffle(list,new Random(47));
+        System.out.println("shuffle = " + list);
+        Collections.fill(list,"pop");
+        System.out.println("pop = " + list);
+        System.out.println("Collections.frequency(list,\"pop\") = " + Collections.frequency(list, "pop"));
+        List<String> nCopies = Collections.nCopies(3, "snap");
+        System.out.println("nCopies = " + nCopies);
+        System.out.println("Collections.disjoint(list,nCopies) = " + Collections.disjoint(list, nCopies));
     }
 }
