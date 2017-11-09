@@ -1,9 +1,6 @@
 package chapter17containeradvanced;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * OkLine(Hangzhou) Co,ltd
@@ -48,13 +45,27 @@ public class Utilities {
 //        copy = [in, the, matrix, Yo, six, five, Four]
         Collections.swap(list,0,list.size()-1);
         System.out.println("swap = " + list);
+//        swap = [Four, the, matrix, Yo, six, five, in]
         Collections.shuffle(list,new Random(47));
         System.out.println("shuffle = " + list);
+//        shuffle = [six, matrix, the, Four, Yo, five, in]
         Collections.fill(list,"pop");
         System.out.println("pop = " + list);
+//        pop = [pop, pop, pop, pop, pop, pop, pop]
         System.out.println("Collections.frequency(list,\"pop\") = " + Collections.frequency(list, "pop"));
+//        Collections.frequency(list,"pop") = 7
         List<String> nCopies = Collections.nCopies(3, "snap");
         System.out.println("nCopies = " + nCopies);
+//        nCopies = [snap, snap, snap]
         System.out.println("Collections.disjoint(list,nCopies) = " + Collections.disjoint(list, nCopies));
+//        Collections.disjoint(list,nCopies) = true
+        Enumeration<String> e = Collections.enumeration(nCopies);
+        Vector<String> stringVector = new Vector<>();
+        while (e.hasMoreElements()){
+            stringVector.add(e.nextElement());
+        }
+        ArrayList<String> strings = new ArrayList<>(stringVector);
+        System.out.println("strings = " + strings);
+//        strings = [snap, snap, snap]
     }
 }
