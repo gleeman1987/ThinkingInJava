@@ -1,5 +1,6 @@
 package chapter18javaio;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -28,6 +29,10 @@ public class PPrint {
         return stringBuffer.toString();
     }
 
+    /**
+     * @see MakeDir#fileData(File)  使用该类的范例
+     *
+     * */
     public static void pprint(Collection<?> collection){
         System.out.println(pformat(collection));
     }

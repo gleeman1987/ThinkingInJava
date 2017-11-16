@@ -24,6 +24,13 @@ public class Assignment {
     }
 
     static class Tank{
-        float level;
+        int level;
+
+        @Override
+        public String toString() {
+            return "Tank{" +
+                    "level=" + level +
+                    '}';
+        }
     }
 }
