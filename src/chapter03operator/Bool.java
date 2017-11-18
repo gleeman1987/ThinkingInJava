@@ -13,12 +13,20 @@ public class Bool {
         int i = random.nextInt(100);
         int j = random.nextInt(100);
         System.out.println("i = "+i);
+//        i = 58
         System.out.println("j = "+j);
+//        j = 55
         System.out.println("i > j :"+(i > j));
+//        i > j :true
         System.out.println("i < j :"+(i < j));
+//        i < j :false
         System.out.println("i >= j :"+(i >= j));
-        System.out.println("i < j :"+(i < j));
+//        i >= j :true
+        System.out.println("i <= j :"+(i <= j));
+//        i <= j :false
         System.out.println("i == j :"+(i == j));
+//        i == j :false
         System.out.println("i != j :"+(i != j));
+//        i != j :true
     }
 }

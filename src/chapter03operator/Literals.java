@@ -17,12 +17,14 @@ public class Literals {
         int i3 = 0177;
         System.out.println("i3:"+Integer.toBinaryString(i3));
         System.out.println("i3:"+Integer.toString(i3));
-        char c = 0xffff;
+        char c = 0x7f;
         System.out.println("c:"+Integer.toBinaryString(c));
         System.out.println("c:"+Integer.toString(c));
+        System.out.println("c = " + c);
         byte b = 0x7f;
         System.out.println("b:"+Integer.toBinaryString(b));
         System.out.println("b:"+Integer.toString(b));
+        System.out.println("b = " + (byte)b);
         float i = 1.93e-43f;
         System.out.println(i);
         System.out.println(255|254);
