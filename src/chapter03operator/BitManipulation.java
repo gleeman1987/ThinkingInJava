@@ -20,6 +20,12 @@ public class BitManipulation {
 
             printBinaryString("i",i);
             printBinaryString("j",j);
+
+        System.out.println();
+        System.out.println();
+
+        System.out.println("Integer.toBinaryString(Integer.MIN_VALUE) = \n" + Integer.toBinaryString(Integer.MIN_VALUE));
+        System.out.println("Integer.toBinaryString(0) = \n" + Integer.toBinaryString(Integer.MAX_VALUE));
     }
 
     private static void printBinaryString(String s, int i) {
