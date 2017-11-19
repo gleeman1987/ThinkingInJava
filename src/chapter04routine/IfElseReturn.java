@@ -19,5 +19,8 @@ public class IfElseReturn {
             return -1;
         else
             return 1;
+//        -1
+//        0
+//        1
     }
 }
