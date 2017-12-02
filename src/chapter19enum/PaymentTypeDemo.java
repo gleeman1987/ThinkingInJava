@@ -7,7 +7,7 @@ package chapter19enum;
  * Mail:zhengjun1987@outlook.com
  */
 public class PaymentTypeDemo {
-    public static void main(String[] args) {
+    public static void main(String... args) {
         for (PaymentType paymentType : PaymentType.values()) {
             System.out.println(paymentType.name()+" = " + paymentType.getServerToken());
         }
