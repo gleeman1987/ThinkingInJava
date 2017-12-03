@@ -33,7 +33,7 @@ public enum Input {
     Input() {
     }
 
-    static Random random = new Random(47);
+    static Random random = new Random(50);
 
     public int getValue() {
         return value;

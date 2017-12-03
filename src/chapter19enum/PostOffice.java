@@ -1,8 +1,6 @@
 package chapter19enum;
 
 import java.util.Iterator;
-import java.util.Spliterator;
-import java.util.function.Consumer;
 
 /**
  * OkLine(Hangzhou) Co,ltd
@@ -130,6 +128,7 @@ public class PostOffice {
 
     }
     static void handleMail(Mail mail){
+        System.out.println("PostOffice.handleMail  " + "mail = [" + mail + "]");
         for (MailHandler mailHandler : MailHandler.values()) {
             if (mailHandler.handleMail(mail)) {
                 return;
