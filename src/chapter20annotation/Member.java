@@ -6,6 +6,7 @@ package chapter20annotation;
  * Date:2017/12/3
  * Project:ThinkingInJava
  */
+@DBTable(name = "MEMBERS")
 public class Member {
     @SQLString(30)
     String firstName;
