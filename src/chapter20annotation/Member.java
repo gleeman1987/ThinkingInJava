@@ -33,13 +33,12 @@ public class Member {
     public Integer getAge() {
         return age;
     }
+    public static int getCount() {
+        return count;
+    }
 
     @Override
     public String toString() {
         return handle;
-    }
-
-    public static int getCount() {
-        return count;
     }
 }

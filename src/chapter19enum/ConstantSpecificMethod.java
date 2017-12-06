@@ -1,5 +1,7 @@
 package chapter19enum;
 
+import com.sun.istack.internal.NotNull;
+
 import java.text.DateFormat;
 import java.util.Date;
 
@@ -19,8 +21,9 @@ public enum ConstantSpecificMethod {
 
     CLASS_PATH {
         @Override
-        String getInfo() {
-            return System.getenv("CLASSPATH");
+        @NotNull String getInfo() {
+//            return System.getenv("CLASSPATH");
+            return null;
         }
     },
 
@@ -33,7 +36,7 @@ public enum ConstantSpecificMethod {
     ;
     abstract String getInfo();
 
-    public static void main(String[] args) {
+    public static void main(@NotNull String[] args) {
         for (ConstantSpecificMethod constantSpecificMethod : values()) {
             System.out.println(constantSpecificMethod.name() + " = " + constantSpecificMethod.getInfo());
         }

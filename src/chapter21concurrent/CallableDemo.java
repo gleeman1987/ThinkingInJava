@@ -30,8 +30,6 @@ public class CallableDemo {
             futures.add(executorService.submit(new TaskWithResult(i)));
         }
         for (Future<String> future : futures) {
-            System.out.println("future.isDone() = " + future.isDone());
-
             try {
                 String s = future.get();
                 System.out.println("future.get() = " + s);
@@ -44,5 +42,25 @@ public class CallableDemo {
                 executorService.shutdown();
             }
         }
+//        TaskWithResult.call  pool-1-thread-1
+//        TaskWithResult.call  pool-1-thread-2
+//        TaskWithResult.call  pool-1-thread-5
+//        TaskWithResult.call  pool-1-thread-4
+//        TaskWithResult.call  pool-1-thread-3
+//        TaskWithResult.call  pool-1-thread-6
+//        TaskWithResult.call  pool-1-thread-7
+//        TaskWithResult.call  pool-1-thread-2
+//        TaskWithResult.call  pool-1-thread-7
+//        future.get() = result of TaskWithResult 0
+//        TaskWithResult.call  pool-1-thread-6
+//        future.get() = result of TaskWithResult 1
+//        future.get() = result of TaskWithResult 2
+//        future.get() = result of TaskWithResult 3
+//        future.get() = result of TaskWithResult 4
+//        future.get() = result of TaskWithResult 5
+//        future.get() = result of TaskWithResult 6
+//        future.get() = result of TaskWithResult 7
+//        future.get() = result of TaskWithResult 8
+//        future.get() = result of TaskWithResult 9
     }
 }
