@@ -3,6 +3,8 @@ package chapter21concurrent;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -74,6 +76,11 @@ abstract class PairManager {
     }
 
     public abstract void increment();
+
+    @Override
+    public String toString() {
+        return pair.toString() + " checkCounter:"+checkCounter;
+    }
 }
 
 class PairManager1 extends PairManager {
@@ -98,5 +105,60 @@ class PairManager2 extends PairManager {
     }
 }
 
+class PairManipulator implements Runnable {
+    private PairManager pairManager;
+
+    public PairManipulator(PairManager pairManager) {
+        this.pairManager = pairManager;
+    }
+
+    @Override
+    public void run() {
+        while (true){
+            pairManager.increment();
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Pair:"+pairManager.getPair()+"  checkCounter:"+pairManager.checkCounter.get();
+    }
+}
+
+class PairChecker implements Runnable {
+    private PairManager pairManager;
+
+    public PairChecker(PairManager pairManager) {
+        this.pairManager = pairManager;
+    }
+
+    @Override
+    public void run() {
+        pairManager.checkCounter.incrementAndGet();
+        pairManager.getPair().checkState();
+    }
+}
+
 public class CriticalSection {
+    static void testApproaches(PairManager pairManager1,PairManager pairManager2){
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        PairManipulator manipulator1 = new PairManipulator(pairManager1),manipulator2 = new PairManipulator(pairManager2);
+        PairChecker pairChecker1 = new PairChecker(pairManager1),pairChecker2 = new PairChecker(pairManager2);
+        executorService.execute(manipulator1);
+        executorService.execute(manipulator2);
+        executorService.execute(pairChecker1);
+        executorService.execute(pairChecker2);
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(MyUtils.getCurrentTime() + "CriticalSection.testApproaches  " + "pairManager1 = [" + pairManager1 + "], pairManager2 = [" + pairManager2 + "]");
+        System.exit(0);
+    }
+
+    public static void main(String[] args) {
+        testApproaches(new PairManager1(),new PairManager2());
+    }
 }
