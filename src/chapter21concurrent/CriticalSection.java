@@ -46,7 +46,7 @@ class Pair {
 
     public class PairNotEqualException extends RuntimeException {
         public PairNotEqualException() {
-            super("Pair values not equal : "+Pair.this);
+            super("Pair values not equal : "+Pair.this +"  Thread info:"+Thread.currentThread());
         }
     }
 
@@ -70,11 +70,11 @@ abstract class PairManager {
     public void storePair(Pair p){
 //        System.out.println(MyUtils.getCurrentTime() + "PairManager.storePair  " + "p = [" + p + "]");
         storage.add(p);
-        try {
-            Thread.sleep(50);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Thread.sleep(1);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
     }
 
     public abstract void increment();
@@ -89,6 +89,11 @@ class PairManager1 extends PairManager {
     @Override
     public synchronized void increment() {
         pair.incrementX();
+        try {
+            Thread.sleep(50);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         pair.incrementY();
         storePair(getPair());
     }
@@ -100,6 +105,11 @@ class PairManager2 extends PairManager {
         Pair temp;
         synchronized (PairManager2.this) {
             pair.incrementX();
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             pair.incrementY();
             temp = getPair();
         }
@@ -140,7 +150,7 @@ class PairChecker implements Runnable {
             pairManager.checkCounter.incrementAndGet();
             pairManager.getPair().checkState();
 //            try {
-//                Thread.sleep(15);
+//                Thread.sleep(2);
 //            } catch (InterruptedException e) {
 //                e.printStackTrace();
 //            }
@@ -150,6 +160,15 @@ class PairChecker implements Runnable {
 
 public class CriticalSection {
     static void testApproaches(PairManager pairManager1,PairManager pairManager2){
+        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+            @Override
+            public void uncaughtException(Thread t, Throwable e) {
+                System.out.println();
+                e.printStackTrace();
+                System.err.println( "Thread info:"+Thread.currentThread());
+                System.exit(1);
+            }
+        });
         ExecutorService executorService = Executors.newCachedThreadPool();
         PairManipulator manipulator1 = new PairManipulator(pairManager1),manipulator2 = new PairManipulator(pairManager2);
         PairChecker pairChecker1 = new PairChecker(pairManager1),pairChecker2 = new PairChecker(pairManager2);

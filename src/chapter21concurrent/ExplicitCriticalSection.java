@@ -11,6 +11,7 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 class ExplicitPairManager1 extends PairManager {
     private Lock lock = new ReentrantLock();
+
     @Override
     public void increment() {
         lock.lock();
@@ -26,10 +27,12 @@ class ExplicitPairManager1 extends PairManager {
 
 class ExplicitPairManager2 extends PairManager {
     private Lock lock = new ReentrantLock();
+
     @Override
     public void increment() {
         Pair temp;
         lock.lock();
+//        synchronized (ExplicitPairManager2.this) {
         try {
             pair.incrementX();
             pair.incrementY();
@@ -37,13 +40,15 @@ class ExplicitPairManager2 extends PairManager {
         } finally {
             lock.unlock();
         }
+//        }
         storePair(temp);
 
     }
 }
+
 public class ExplicitCriticalSection {
     public static void main(String[] args) {
-        PairManager pairManager1 = new ExplicitPairManager1(),pairManager2 = new ExplicitPairManager2();
-        CriticalSection.testApproaches(pairManager1,pairManager2);
+        PairManager pairManager1 = new ExplicitPairManager1(), pairManager2 = new ExplicitPairManager2();
+        CriticalSection.testApproaches(pairManager1, pairManager2);
     }
 }
