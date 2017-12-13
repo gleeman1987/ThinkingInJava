@@ -51,6 +51,7 @@ class Pair {
     }
 
     public void checkState(){
+        System.out.println(MyUtils.getCurrentTime() + "Pair.checkState  " + Pair.this);
         if (x != y) {
             throw new PairNotEqualException();
         }
@@ -62,11 +63,12 @@ abstract class PairManager {
     protected Pair pair = new Pair();
     private List<Pair> storage = Collections.synchronizedList(new ArrayList<>());
 
-    public Pair getPair() {
+    public synchronized Pair getPair() {
         return new Pair(pair.getX(),pair.getY());
     }
 
     public void storePair(Pair p){
+//        System.out.println(MyUtils.getCurrentTime() + "PairManager.storePair  " + "p = [" + p + "]");
         storage.add(p);
         try {
             Thread.sleep(50);
@@ -134,8 +136,15 @@ class PairChecker implements Runnable {
 
     @Override
     public void run() {
-        pairManager.checkCounter.incrementAndGet();
-        pairManager.getPair().checkState();
+        while (true) {
+            pairManager.checkCounter.incrementAndGet();
+            pairManager.getPair().checkState();
+//            try {
+//                Thread.sleep(15);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+        }
     }
 }
 
