@@ -20,7 +20,7 @@ public class HelloDate {
 //            System.out.println(availableLocale);
 //        }
 
-        String zh = new Date("zh").toString();
+        String zh = new Date().toString();
         System.out.println("Hello,it is "+ zh);
     }
 }
