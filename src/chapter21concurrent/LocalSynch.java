@@ -1,8 +1,5 @@
 package chapter21concurrent;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 /**
  * OkLine(Hangzhou) Co,ltd
  * Created by zhengjun
@@ -20,14 +17,11 @@ public class LocalSynch {
     }
 
     public void setLocalValue() {
-        synchronized (" ") {
+        synchronized (object) {
             this.localValue++;
             this.localValue++;
-            Thread.yield();
             this.localValue++;
-            Thread.yield();
             this.localValue++;
-            Thread.yield();
             this.localValue++;
             System.out.println(MyUtils.getCurrentTime() + "LocalSynch.setLocalValue  " + "+5");
         }
@@ -44,6 +38,7 @@ public class LocalSynch {
         public void run() {
             while (true){
                 localSynch.setLocalValue();
+                Thread.yield();
             }
         }
     }
@@ -63,6 +58,7 @@ public class LocalSynch {
                     throw new RuntimeException("线程互斥出错,产生了不能被5整除的值:"+localValue);
                 }
                 System.out.println(MyUtils.getCurrentTime() + "localSynch.getLocalValue() = " + localValue);
+                Thread.yield();
             }
         }
     }
@@ -77,9 +73,6 @@ public class LocalSynch {
         });
         LocalSynch localSynch = new LocalSynch();
         new Thread(new Setter(localSynch)).start();
-        new Thread(new Getter(localSynch)).start();
-        new Thread(new Getter(localSynch)).start();
-        new Thread(new Getter(localSynch)).start();
         new Thread(new Getter(localSynch)).start();
         try {
             Thread.sleep(200);
