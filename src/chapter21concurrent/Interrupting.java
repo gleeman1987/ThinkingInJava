@@ -43,7 +43,7 @@ class IOBlocked implements Runnable {
                 throw new RuntimeException();
             }
         }
-        System.out.println(MyUtils.getCurrentTime() + "Exiting from IOBlocked.run  " + "");
+        System.out.println(MyUtils.getCurrentTime() + "Exiting from IOBlocked.run  " + inputStream.getClass().getSimpleName());
     }
 }
 
