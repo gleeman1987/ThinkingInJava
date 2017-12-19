@@ -1,6 +1,5 @@
 package chapter21concurrent;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -24,8 +23,8 @@ public class CloseResource {
         Thread.sleep(100);
         System.out.println(MyUtils.getCurrentTime() +"Shut down all threads!");
         executorService.shutdownNow();
-
         Thread.sleep(1000);
+        System.out.println(MyUtils.getCurrentTime() +"======================");
         System.out.println(MyUtils.getCurrentTime() +"Closing "+localhost.getClass().getSimpleName());
         localhost.close();
 
