@@ -1,5 +1,7 @@
 package chapter03operator;
 
+import chapter21concurrent.MyUtils;
+
 import java.util.Random;
 
 /**
@@ -13,5 +15,11 @@ public class Test {
         long seed = System.currentTimeMillis() % 79;
         int nextInt = new Random().nextInt(1024);
         System.out.println("seed : "+seed +"  result:"+nextInt);
+
+        Long aLong = Long.valueOf(Integer.toString(Integer.MAX_VALUE));
+        System.out.println(MyUtils.getCurrentTime() + "aLong = " + aLong);
+        Long aLong1 = Long.valueOf((long) (Math.pow(2,31) - 1));
+        System.out.println(MyUtils.getCurrentTime() + "aLong1 = " + aLong1);
+        System.out.println(MyUtils.getCurrentTime() + (aLong - aLong1));
     }
 }
