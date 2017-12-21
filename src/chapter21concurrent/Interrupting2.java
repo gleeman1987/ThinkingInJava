@@ -42,4 +42,10 @@ public class Interrupting2 {
         System.out.println(MyUtils.getCurrentTime() +"Issuing thread.interrupt()");
         thread.interrupt();
     }
+//2017-12-21 10:35:57:890  Waiting f() in BlockedMutex
+//2017-12-21 10:35:58:819  Issuing thread.interrupt()
+//2017-12-21 10:35:58:819  Interrupted from aquisition lock in BlockedMutex.f
+//2017-12-21 10:35:58:819  Broken out of blocked call
+//
+//Process finished with exit code 0
 }
